@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc-watch --onSuccess \"node dist/bin.js\"",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "dev": "dotenv -- tsc-watch --onSuccess \"node dist/bin.js\"",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:coverage": "cross-env NODE_ENV=test dotenv -e .env.test -- jest --coverage",
+    "test:unit": "cross-env NODE_ENV=test dotenv -e .env.test -- jest --testMatch '**/tests/unit/**/*.test.ts'",
+    "test:unit:coverage": "cross-env NODE_ENV=test dotenv -e .env.test -- jest --testMatch '**/tests/unit/**/*.test.ts' --coverage",
+    "test:integration": "./scripts/run-integration.sh",
+    "test:integratoin:coverage": "./scripts/run-integration.sh --coverage"
   },
   "keywords": [],
   "author": "",
@@ -16,12 +20,16 @@
     "@types/express": "^5.0.3",
     "@types/node": "^24.1.0",
     "@types/supertest": "^6.0.3",
+    "cross-env": "^10.0.0",
+    "dotenv-cli": "^10.0.0",
     "supertest": "^7.1.4",
     "ts-jest": "^29.4.0",
     "tsc-watch": "^7.1.1",
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mongoose": "^8.17.0"
   }
 }

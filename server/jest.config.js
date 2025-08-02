@@ -9,6 +9,11 @@ module.exports = {
     ...tsJestTransformCfg,
   },
 
+  testMatch: [
+    "**/tests/unit/**/*.test.ts",
+    "**/tests/integration/**/*.test.ts",
+  ],
+
   coverageThreshold: {
     global: {
       branches: 80,

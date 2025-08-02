@@ -1,5 +1,5 @@
 import { describe, it, expect } from "@jest/globals";
-import { sum } from "../sum";
+import { sum } from "../../sum";
 
 describe("Sum module", () => {
   it("should give 2 + 3 result 5", () => {
