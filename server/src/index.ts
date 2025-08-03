@@ -6,7 +6,7 @@ export const app = express();
 app.use(express.json());
 
 app.get("/health", (req, res) => {
-  res.status(200).json({ ok: true, message: "healthy server" });
+  res.status(200).json({ ok: true });
 });
 
 app.post("/sum", async (req, res) => {
